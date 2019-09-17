@@ -1,0 +1,11 @@
+image: docker
+stages:
+ - build
+build-stage:
+ stage: build
+ script:
+   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+   - docker build -t proflo/proflo-portal-backend_webapi .
+   - docker push proflo/proflo-portal-backend_webapi
+ tags:
+   - immersive-cgi-w7-dotnet

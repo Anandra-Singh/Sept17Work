@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  webapi:
+    build: .
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+    environment:
+      mongo_db: "mongodb://db:27017"
+  db:
+    image: mvertes/alpine-mongo
+    ports:
+      - "27017:27017"
